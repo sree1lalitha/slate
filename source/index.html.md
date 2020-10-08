@@ -1,15 +1,11 @@
 ---
-title: API Reference
+title: payg
 
 language_tabs: # must be one of https://git.io/vQNgJ
   - shell
-  - ruby
   - python
   - javascript
 
-toc_footers:
-  - <a href='#'>Sign Up for a Developer Key</a>
-  - <a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a>
 
 includes:
   - errors
@@ -19,223 +15,875 @@ search: true
 code_clipboard: true
 ---
 
-# Introduction
+# PayGv2 Documentation
 
-Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.
 
-We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.
+version : V1
 
-This example API documentation page was created with [Slate](https://github.com/slatedocs/slate). Feel free to edit it and use it as a base for your own API's documentation.
+baseUri : uatapi.payg.in/payment/api/order/
 
-# Authentication
+protocols : HTTPS
 
-> To authorize, use this code:
+mediaType : application/json
 
-```ruby
-require 'kittn'
 
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-```
+
+
+
+> /create post:
+
 
 ```python
-import kittn
+# PYTHON EXAMPLE
 
-api = kittn.authorize('meowmeowmeow')
+import requests
+
+url = 'https://uatapi.payg.in/payment/api/order/create'
 ```
 
 ```shell
-# With shell, you can just pass the correct header with each request
-curl "api_endpoint_here"
-  -H "Authorization: meowmeowmeow"
+# CURL EXAMPLE
+
+curl -X POST "uatapi.payg.in/payment/api/order/create" \
+	-H "Authorization: key:"Authorization" value:"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"" \
+	-d @request_body
 ```
 
 ```javascript
-const kittn = require('kittn');
+# JAVA EXAMPLE
 
-let api = kittn.authorize('meowmeowmeow');
-```
-
-> Make sure to replace `meowmeowmeow` with your API key.
-
-Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our [developer portal](http://example.com/developers).
-
-Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:
-
-`Authorization: meowmeowmeow`
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-
-# Kittens
-
-## Get All Kittens
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get
-```
-
-```python
-import kittn
-
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get()
-```
-
-```shell
-curl "http://example.com/api/kittens"
-  -H "Authorization: meowmeowmeow"
-```
-
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let kittens = api.kittens.get();
-```
-
-> The above command returns JSON structured like this:
-
-```json
-[
-  {
-    "id": 1,
-    "name": "Fluffums",
-    "breed": "calico",
-    "fluffiness": 6,
-    "cuteness": 7
-  },
-  {
-    "id": 2,
-    "name": "Max",
-    "breed": "unknown",
-    "fluffiness": 5,
-    "cuteness": 10
+const http = require('https');
+const init = {
+  host: 'uatapi.payg.in',
+  path: '/payment/api/order/create',
+  method: 'POST',
+  headers: {
+    'Authorization': 'key:"Authorization" value:"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"'
   }
-]
+};
 ```
+# / Create
 
-This endpoint retrieves all kittens.
+## /Create post
 
-### HTTP Request
+POST: /create
 
-`GET http://example.com/api/kittens`
+# Header Parameters
 
-### Query Parameters
-
-Parameter | Default | Description
---------- | ------- | -----------
-include_cats | false | If set to true, the result will also include cats.
-available | true | If set to false, the result will include kittens that have already been adopted.
-
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-
-## Get a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.get(2)
-```
+> REQUEST HEADERS
 
 ```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.get(2)
+headers = {'Authorization': 'key:"Authorization" value:"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"'}
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -H "Authorization: meowmeowmeow"
+
+Authorization: key:"Authorization" value:"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"
 ```
 
 ```javascript
-const kittn = require('kittn');
 
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.get(2);
+const callback = function(response) {
+  let result = Buffer.alloc(0);
+  response.on('data', function(chunk) {
+    result = Buffer.concat([result, chunk]);
+  });
+  
+  response.on('end', function() {
+    // result has response body buffer
+    console.log(result.toString());
+  });
+};
+
+const req = http.request(init, callback);
 ```
 
-> The above command returns JSON structured like this:
+> REQUEST BODY:
 
-```json
-{
-  "id": 2,
-  "name": "Max",
-  "breed": "unknown",
-  "fluffiness": 5,
-  "cuteness": 10
-}
-```
 
-This endpoint retrieves a specific kitten.
+### Authorization
 
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-
-### HTTP Request
-
-`GET http://example.com/kittens/<ID>`
-
-### URL Parameters
-
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to retrieve
-
-## Delete a Specific Kitten
-
-```ruby
-require 'kittn'
-
-api = Kittn::APIClient.authorize!('meowmeowmeow')
-api.kittens.delete(2)
-```
+Property | Value 
+--------- | -------
+required | true 
+type | string 
+example | key:"Authorization" value:"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"
 
 ```python
-import kittn
 
-api = kittn.authorize('meowmeowmeow')
-api.kittens.delete(2)
+body = """{
+  "OrderKeyId": "",
+  "MerchantKeyId": 2,
+  "ApiKey": "",
+  "UniqueRequestId": "ae021dg",
+  "OrderAmount": 5,
+  "OrderType": "",
+  "OrderId": "",
+  "OrderStatus": "",
+  "OrderAmountData": {
+    "AmountDetail": [
+      {
+        "AmountTypeDesc": "",
+        "Amount": 0
+      }
+    ]
+  },
+  "ProductData": "",
+  "NextStepFlowData": "",
+  "TransactionData": {
+    "AcceptedPaymentTypes": "",
+    "PaymentType": "",
+    "SurchargeType": "",
+    "SurchargeValue": 0,
+    "Card": {
+      "CardNo": "",
+      "CardType": 0,
+      "NameOnCard": "",
+      "ExpiryDate": "",
+      "Cvv": "",
+      "TrackData": "",
+      "ChipData": "",
+      "PassCode": "",
+      "Ksn": "",
+      "PinBlock": "",
+      "AdditionalData1": "",
+      "AdditionalData2": ""
+    },
+    "Ach": {
+      "BankCodeType": 0,
+      "BankCode": "",
+      "AccountNo": "",
+      "BankAccountType": 0,
+      "CheckNo": "",
+      "SecCode": 1,
+      "MicrData": "",
+      "CheckFrontImage": "",
+      "CheckBackImage": "",
+      "NameOnCard": "",
+      "First6Digit": "",
+      "Last4Digit": ""
+    },
+    "Wallet": {
+      "BarQrCode": "",
+      "UserName": "",
+      "WalletType": 1,
+      "FirstName": "",
+      "LastName": ""
+    },
+    "Upi": {
+      "Vpa": "",
+      "AccountNumber": "",
+      "Ifsc": "",
+      "AdhAadhaarNo": ""
+    },
+    "Card3DSecure": {
+      "AuthenticateTransaction": true,
+      "Secure3DAuthenticationRequest": {
+        "MD": "",
+        "PaRes": ""
+      }
+    },
+    "RefTransactionId": "",
+    "IndustrySpecicationCode": "",
+    "PartialPaymentOption": ""
+  },
+  "CustomerData": {
+    "CustomerId": "12",
+    "CustomerNotes": "Sample",
+    "FirstName": "First",
+    "LastName": "Last",
+    "MobileNo": "9011001100",
+    "Email": "test@gmail.com",
+    "EmailReceipt": true,
+    "BillingAddress": "",
+    "BillingCity": "",
+    "BillingState": "",
+    "BillingCountry": "",
+    "BillingZipCode": "",
+    "ShippingFirstName": "",
+    "ShippingLastName": "",
+    "ShippingAddress": "",
+    "ShippingCity": "",
+    "ShippingState": "",
+    "ShippingCountry": "",
+    "ShippingZipCode": "",
+    "ShippingMobileNo": ""
+  },
+  "UserDefinedData": {
+    "UserDefined1": "",
+    "UserDefined2": "",
+    "UserDefined3": "",
+    "UserDefined4": "",
+    "UserDefined5": "",
+    "UserDefined6": "",
+    "UserDefined7": "",
+    "UserDefined8": "",
+    "UserDefined9": "",
+    "UserDefined10": "",
+    "UserDefined11": "",
+    "UserDefined12": "",
+    "UserDefined13": "",
+    "UserDefined14": "",
+    "UserDefined15": "",
+    "UserDefined16": "",
+    "UserDefined17": "",
+    "UserDefined18": "",
+    "UserDefined19": "",
+    "UserDefined20": ""
+  },
+  "IntegrationData": {
+    "UserName": "",
+    "Source": "",
+    "IntegrationType": "",
+    "HashData": "",
+    "PlatformId": ""
+  },
+  "ShipmentData": "",
+  "RequestDateTime": "",
+  "RedirectUrl": ""
+}"""
+
+req = requests.post(url, headers=headers, data=body)
+
+print(req.status_code)
+print(req.headers)
+print(req.text)
 ```
 
 ```shell
-curl "http://example.com/api/kittens/2"
-  -X DELETE
-  -H "Authorization: meowmeowmeow"
-```
 
-```javascript
-const kittn = require('kittn');
-
-let api = kittn.authorize('meowmeowmeow');
-let max = api.kittens.delete(2);
-```
-
-> The above command returns JSON structured like this:
-
-```json
 {
-  "id": 2,
-  "deleted" : ":("
+  "OrderKeyId": "",
+  "MerchantKeyId": 2,
+  "ApiKey": "",
+  "UniqueRequestId": "ae021dg",
+  "OrderAmount": 5,
+  "OrderType": "",
+  "OrderId": "",
+  "OrderStatus": "",
+  "OrderAmountData": {
+    "AmountDetail": [
+      {
+        "AmountTypeDesc": "",
+        "Amount": 0
+      }
+    ]
+  },
+  "ProductData": "",
+  "NextStepFlowData": "",
+  "TransactionData": {
+    "AcceptedPaymentTypes": "",
+    "PaymentType": "",
+    "SurchargeType": "",
+    "SurchargeValue": 0,
+    "Card": {
+      "CardNo": "",
+      "CardType": 0,
+      "NameOnCard": "",
+      "ExpiryDate": "",
+      "Cvv": "",
+      "TrackData": "",
+      "ChipData": "",
+      "PassCode": "",
+      "Ksn": "",
+      "PinBlock": "",
+      "AdditionalData1": "",
+      "AdditionalData2": ""
+    },
+    "Ach": {
+      "BankCodeType": 0,
+      "BankCode": "",
+      "AccountNo": "",
+      "BankAccountType": 0,
+      "CheckNo": "",
+      "SecCode": 1,
+      "MicrData": "",
+      "CheckFrontImage": "",
+      "CheckBackImage": "",
+      "NameOnCard": "",
+      "First6Digit": "",
+      "Last4Digit": ""
+    },
+    "Wallet": {
+      "BarQrCode": "",
+      "UserName": "",
+      "WalletType": 1,
+      "FirstName": "",
+      "LastName": ""
+    },
+    "Upi": {
+      "Vpa": "",
+      "AccountNumber": "",
+      "Ifsc": "",
+      "AdhAadhaarNo": ""
+    },
+    "Card3DSecure": {
+      "AuthenticateTransaction": true,
+      "Secure3DAuthenticationRequest": {
+        "MD": "",
+        "PaRes": ""
+      }
+    },
+    "RefTransactionId": "",
+    "IndustrySpecicationCode": "",
+    "PartialPaymentOption": ""
+  },
+  "CustomerData": {
+    "CustomerId": "12",
+    "CustomerNotes": "Sample",
+    "FirstName": "First",
+    "LastName": "Last",
+    "MobileNo": "9011001100",
+    "Email": "test@gmail.com",
+    "EmailReceipt": true,
+    "BillingAddress": "",
+    "BillingCity": "",
+    "BillingState": "",
+    "BillingCountry": "",
+    "BillingZipCode": "",
+    "ShippingFirstName": "",
+    "ShippingLastName": "",
+    "ShippingAddress": "",
+    "ShippingCity": "",
+    "ShippingState": "",
+    "ShippingCountry": "",
+    "ShippingZipCode": "",
+    "ShippingMobileNo": ""
+  },
+  "UserDefinedData": {
+    "UserDefined1": "",
+    "UserDefined2": "",
+    "UserDefined3": "",
+    "UserDefined4": "",
+    "UserDefined5": "",
+    "UserDefined6": "",
+    "UserDefined7": "",
+    "UserDefined8": "",
+    "UserDefined9": "",
+    "UserDefined10": "",
+    "UserDefined11": "",
+    "UserDefined12": "",
+    "UserDefined13": "",
+    "UserDefined14": "",
+    "UserDefined15": "",
+    "UserDefined16": "",
+    "UserDefined17": "",
+    "UserDefined18": "",
+    "UserDefined19": "",
+    "UserDefined20": ""
+  },
+  "IntegrationData": {
+    "UserName": "",
+    "Source": "",
+    "IntegrationType": "",
+    "HashData": "",
+    "PlatformId": ""
+  },
+  "ShipmentData": "",
+  "RequestDateTime": "",
+  "RedirectUrl": ""
 }
 ```
 
-This endpoint deletes a specific kitten.
+```javascript
 
-### HTTP Request
+const body = `{
+  "OrderKeyId": "",
+  "MerchantKeyId": 2,
+  "ApiKey": "",
+  "UniqueRequestId": "ae021dg",
+  "OrderAmount": 5,
+  "OrderType": "",
+  "OrderId": "",
+  "OrderStatus": "",
+  "OrderAmountData": {
+    "AmountDetail": [
+      {
+        "AmountTypeDesc": "",
+        "Amount": 0
+      }
+    ]
+  },
+  "ProductData": "",
+  "NextStepFlowData": "",
+  "TransactionData": {
+    "AcceptedPaymentTypes": "",
+    "PaymentType": "",
+    "SurchargeType": "",
+    "SurchargeValue": 0,
+    "Card": {
+      "CardNo": "",
+      "CardType": 0,
+      "NameOnCard": "",
+      "ExpiryDate": "",
+      "Cvv": "",
+      "TrackData": "",
+      "ChipData": "",
+      "PassCode": "",
+      "Ksn": "",
+      "PinBlock": "",
+      "AdditionalData1": "",
+      "AdditionalData2": ""
+    },
+    "Ach": {
+      "BankCodeType": 0,
+      "BankCode": "",
+      "AccountNo": "",
+      "BankAccountType": 0,
+      "CheckNo": "",
+      "SecCode": 1,
+      "MicrData": "",
+      "CheckFrontImage": "",
+      "CheckBackImage": "",
+      "NameOnCard": "",
+      "First6Digit": "",
+      "Last4Digit": ""
+    },
+    "Wallet": {
+      "BarQrCode": "",
+      "UserName": "",
+      "WalletType": 1,
+      "FirstName": "",
+      "LastName": ""
+    },
+    "Upi": {
+      "Vpa": "",
+      "AccountNumber": "",
+      "Ifsc": "",
+      "AdhAadhaarNo": ""
+    },
+    "Card3DSecure": {
+      "AuthenticateTransaction": true,
+      "Secure3DAuthenticationRequest": {
+        "MD": "",
+        "PaRes": ""
+      }
+    },
+    "RefTransactionId": "",
+    "IndustrySpecicationCode": "",
+    "PartialPaymentOption": ""
+  },
+  "CustomerData": {
+    "CustomerId": "12",
+    "CustomerNotes": "Sample",
+    "FirstName": "First",
+    "LastName": "Last",
+    "MobileNo": "9011001100",
+    "Email": "test@gmail.com",
+    "EmailReceipt": true,
+    "BillingAddress": "",
+    "BillingCity": "",
+    "BillingState": "",
+    "BillingCountry": "",
+    "BillingZipCode": "",
+    "ShippingFirstName": "",
+    "ShippingLastName": "",
+    "ShippingAddress": "",
+    "ShippingCity": "",
+    "ShippingState": "",
+    "ShippingCountry": "",
+    "ShippingZipCode": "",
+    "ShippingMobileNo": ""
+  },
+  "UserDefinedData": {
+    "UserDefined1": "",
+    "UserDefined2": "",
+    "UserDefined3": "",
+    "UserDefined4": "",
+    "UserDefined5": "",
+    "UserDefined6": "",
+    "UserDefined7": "",
+    "UserDefined8": "",
+    "UserDefined9": "",
+    "UserDefined10": "",
+    "UserDefined11": "",
+    "UserDefined12": "",
+    "UserDefined13": "",
+    "UserDefined14": "",
+    "UserDefined15": "",
+    "UserDefined16": "",
+    "UserDefined17": "",
+    "UserDefined18": "",
+    "UserDefined19": "",
+    "UserDefined20": ""
+  },
+  "IntegrationData": {
+    "UserName": "",
+    "Source": "",
+    "IntegrationType": "",
+    "HashData": "",
+    "PlatformId": ""
+  },
+  "ShipmentData": "",
+  "RequestDateTime": "",
+  "RedirectUrl": ""
+}`;
+req.write(body);
+req.end();
+```
 
-`DELETE http://example.com/kittens/<ID>`
+## Possible Responses
 
-### URL Parameters
+200
 
-Parameter | Description
---------- | -----------
-ID | The ID of the kitten to delete
+Status Success
 
+400
+
+Bad input parameter. Error message should indicate which one and why.
+
+401
+
+The client passed in the invalid Auth token. Client should refresh the token and then try again.
+
+403
+
+Merchant doesn’t exist. * Merchant not registered. * Application try to access to properties not belong to an App. * Application try to trash/purge root node. * Application try to update contentProperties. * Operation is blocked (for third-party apps). * Merchant account over quota.
+
+404
+
+Resource not found.
+
+405
+
+The resource doesn't support the specified HTTP verb.
+
+409
+
+Conflict
+
+411
+
+The Content-Length header was not specified.
+
+412
+
+Precondition failed.
+
+429
+
+Too many request for rate limiting.
+
+500
+
+Servers are not working as expected. The request is probably valid but needs to be requested again later.
+
+503
+
+Service Unavailable.
+
+> Type 
+
+> any
+
+
+> RESPONSE BODY
+
+>200
+
+```python
+
+"OrderKeyId": ""
+"MerchantKeyId": 2
+"ApiKey": ""
+"UniqueRequestId": "ae021dg"
+"OrderAmount": 5.0
+"OrderType": ""
+"OrderId": ""
+"OrderStatus": ""
+"OrderAmountData":
+  "AmountDetail":
+    -
+      "AmountTypeDesc": ""
+      "Amount": 0
+"ProductData": ""
+"NextStepFlowData": ""
+"TransactionData":
+  "AcceptedPaymentTypes": ""
+  "PaymentType": ""
+  "SurchargeType": ""
+  "SurchargeValue": 0
+  "Card":
+    "CardNo": ""
+    "CardType": 0
+    "NameOnCard": ""
+    "ExpiryDate": ""
+    "Cvv": ""
+    "TrackData": ""
+    "ChipData": ""
+    "PassCode": ""
+    "Ksn": ""
+    "PinBlock": ""
+    "AdditionalData1": ""
+    "AdditionalData2": ""
+  "Ach":
+    "BankCodeType": 0
+    "BankCode": ""
+    "AccountNo": ""
+    "BankAccountType": 0
+    "CheckNo": ""
+    "SecCode": 1
+    "MicrData": ""
+    "CheckFrontImage": ""
+    "CheckBackImage": ""
+    "NameOnCard": ""
+    "First6Digit": ""
+    "Last4Digit": ""
+  "Wallet":
+    "BarQrCode": ""
+    "UserName": ""
+    "WalletType": 1
+    "FirstName": ""
+    "LastName": ""
+  "Upi":
+    "Vpa": ""
+    "AccountNumber": ""
+    "Ifsc": ""
+    "AdhAadhaarNo": ""
+  "Card3DSecure":
+    "AuthenticateTransaction": true
+    "Secure3DAuthenticationRequest":
+      "MD": ""
+      "PaRes": ""
+  "RefTransactionId": ""
+  "IndustrySpecicationCode": ""
+  "PartialPaymentOption": ""
+"CustomerData":
+  "CustomerId": "12"
+  "CustomerNotes": "Sample"
+  "FirstName": "First"
+  "LastName": "Last"
+  "MobileNo": "9011001100"
+  "Email": "test@gmail.com"
+  "EmailReceipt": true
+  "BillingAddress": ""
+  "BillingCity": ""
+  "BillingState": ""
+  "BillingCountry": ""
+  "BillingZipCode": ""
+  "ShippingFirstName": ""
+  "ShippingLastName": ""
+  "ShippingAddress": ""
+  "ShippingCity": ""
+  "ShippingState": ""
+  "ShippingCountry": ""
+  "ShippingZipCode": ""
+  "ShippingMobileNo": ""
+"UserDefinedData":
+  "UserDefined1": ""
+  "UserDefined2": ""
+  "UserDefined3": ""
+  "UserDefined4": ""
+  "UserDefined5": ""
+  "UserDefined6": ""
+  "UserDefined7": ""
+  "UserDefined8": ""
+  "UserDefined9": ""
+  "UserDefined10": ""
+  "UserDefined11": ""
+  "UserDefined12": ""
+  "UserDefined13": ""
+  "UserDefined14": ""
+  "UserDefined15": ""
+  "UserDefined16": ""
+  "UserDefined17": ""
+  "UserDefined18": ""
+  "UserDefined19": ""
+  "UserDefined20": ""
+"IntegrationData":
+  "UserName": ""
+  "Source": ""
+  "IntegrationType": ""
+  "HashData": ""
+  "PlatformId": ""
+"ShipmentData": ""
+"RequestDateTime": ""
+"RedirectUrl": ""
+```
+
+```shell
+{
+  "OrderKeyId": "200915M292UAA10030",
+  "MerchantKeyId": 292,
+  "UniqueRequestId": "AA10030",
+  "OrderType": "PAYMENT",
+  "OrderAmount": 15,
+  "OrderId": "225",
+  "OrderStatus": null,
+  "OrderPaymentStatus": 0,
+  "OrderPaymentStatusText": null,
+  "PaymentStatus": 0,
+  "PaymentTransactionId": null,
+  "PaymentResponseCode": 0,
+  "PaymentApprovalCode": null,
+  "PaymentResponseText": null,
+  "PaymentMethod": null,
+  "PaymentAccount": null,
+  "OrderNotes": null,
+  "PaymentDateTime": null,
+  "UpdatedDateTime": null,
+  "PaymentProcessUrl": "https://uat.payg.in/payment/payment?orderid=200915M292UAA10030",
+  "OrderPaymentCustomerData": {
+    "FirstName": "test",
+    "LastName": null,
+    "Address": null,
+    "City": null,
+    "State": null,
+    "ZipCode": null,
+    "Country": null,
+    "MobileNo": "33333333333",
+    "Email": "praveen@gmail.com",
+    "UserId": null,
+    "IpAddress": null
+  },
+  "UpiLink": "&sign=",
+  "CustomerData": {
+    "CustomerId": "1",
+    "CustomerNotes": null,
+    "FirstName": "test",
+    "LastName": "m",
+    "MobileNo": "33333333333",
+    "Email": "praveen@gmail.com",
+    "EmailReceipt": false,
+    "BillingAddress": "Telangana",
+    "BillingCity": "test",
+    "BillingState": "TS",
+    "BillingCountry": "IN",
+    "BillingZipCode": "TEST",
+    "ShippingFirstName": "",
+    "ShippingLastName": "",
+    "ShippingAddress": "",
+    "ShippingCity": "",
+    "ShippingState": "",
+    "ShippingCountry": "",
+    "ShippingZipCode": "",
+    "ShippingMobileNo": ""
+  }
+}
+```
+
+```javascript
+
+"OrderKeyId": ""
+"MerchantKeyId": 2
+"ApiKey": ""
+"UniqueRequestId": "ae021dg"
+"OrderAmount": 5.0
+"OrderType": ""
+"OrderId": ""
+"OrderStatus": ""
+"OrderAmountData":
+  "AmountDetail":
+    -
+      "AmountTypeDesc": ""
+      "Amount": 0
+"ProductData": ""
+"NextStepFlowData": ""
+"TransactionData":
+  "AcceptedPaymentTypes": ""
+  "PaymentType": ""
+  "SurchargeType": ""
+  "SurchargeValue": 0
+  "Card":
+    "CardNo": ""
+    "CardType": 0
+    "NameOnCard": ""
+    "ExpiryDate": ""
+    "Cvv": ""
+    "TrackData": ""
+    "ChipData": ""
+    "PassCode": ""
+    "Ksn": ""
+    "PinBlock": ""
+    "AdditionalData1": ""
+    "AdditionalData2": ""
+  "Ach":
+    "BankCodeType": 0
+    "BankCode": ""
+    "AccountNo": ""
+    "BankAccountType": 0
+    "CheckNo": ""
+    "SecCode": 1
+    "MicrData": ""
+    "CheckFrontImage": ""
+    "CheckBackImage": ""
+    "NameOnCard": ""
+    "First6Digit": ""
+    "Last4Digit": ""
+  "Wallet":
+    "BarQrCode": ""
+    "UserName": ""
+    "WalletType": 1
+    "FirstName": ""
+    "LastName": ""
+  "Upi":
+    "Vpa": ""
+    "AccountNumber": ""
+    "Ifsc": ""
+    "AdhAadhaarNo": ""
+  "Card3DSecure":
+    "AuthenticateTransaction": true
+    "Secure3DAuthenticationRequest":
+      "MD": ""
+      "PaRes": ""
+  "RefTransactionId": ""
+  "IndustrySpecicationCode": ""
+  "PartialPaymentOption": ""
+"CustomerData":
+  "CustomerId": "12"
+  "CustomerNotes": "Sample"
+  "FirstName": "First"
+  "LastName": "Last"
+  "MobileNo": "9011001100"
+  "Email": "test@gmail.com"
+  "EmailReceipt": true
+  "BillingAddress": ""
+  "BillingCity": ""
+  "BillingState": ""
+  "BillingCountry": ""
+  "BillingZipCode": ""
+  "ShippingFirstName": ""
+  "ShippingLastName": ""
+  "ShippingAddress": ""
+  "ShippingCity": ""
+  "ShippingState": ""
+  "ShippingCountry": ""
+  "ShippingZipCode": ""
+  "ShippingMobileNo": ""
+"UserDefinedData":
+  "UserDefined1": ""
+  "UserDefined2": ""
+  "UserDefined3": ""
+  "UserDefined4": ""
+  "UserDefined5": ""
+  "UserDefined6": ""
+  "UserDefined7": ""
+  "UserDefined8": ""
+  "UserDefined9": ""
+  "UserDefined10": ""
+  "UserDefined11": ""
+  "UserDefined12": ""
+  "UserDefined13": ""
+  "UserDefined14": ""
+  "UserDefined15": ""
+  "UserDefined16": ""
+  "UserDefined17": ""
+  "UserDefined18": ""
+  "UserDefined19": ""
+  "UserDefined20": ""
+"IntegrationData":
+  "UserName": ""
+  "Source": ""
+  "IntegrationType": ""
+  "HashData": ""
+  "PlatformId": ""
+"ShipmentData": ""
+"RequestDateTime": ""
+"RedirectUrl": ""
+```
+
+> Type:
+
+> any
+  
