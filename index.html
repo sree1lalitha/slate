@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta content="IE=edge,chrome=1" http-equiv="X-UA-Compatible">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <title>API Reference</title>
+    <title>payg</title>
 
     <style media="screen">
       .highlight table td { padding: 5px; }
@@ -288,18 +288,17 @@
     </script>
   </head>
 
-  <body class="index" data-languages="[&quot;shell&quot;,&quot;ruby&quot;,&quot;python&quot;,&quot;javascript&quot;]">
+  <body class="index" data-languages="[&quot;shell&quot;,&quot;python&quot;,&quot;javascript&quot;]">
     <a href="#" id="nav-button">
       <span>
         NAV
-        <img src="images/navbar-cad8cdcb.png" alt="" />
+        <img src="images/payg-logo-f09c24d6.png" alt="" />
       </span>
     </a>
     <div class="toc-wrapper">
-      <img src="images/logo-1e815a84.png" class="logo" alt="" />
+      <img src="images/payg-logo-f09c24d6.png" class="logo" alt="" />
         <div class="lang-selector">
               <a href="#" data-language-name="shell">shell</a>
-              <a href="#" data-language-name="ruby">ruby</a>
               <a href="#" data-language-name="python">python</a>
               <a href="#" data-language-name="javascript">javascript</a>
         </div>
@@ -309,280 +308,878 @@
         <ul class="search-results"></ul>
       <ul id="toc" class="toc-list-h1">
           <li>
-            <a href="#introduction" class="toc-h1 toc-link" data-title="Introduction">Introduction</a>
+            <a href="#paygv2-documentation" class="toc-h1 toc-link" data-title="PayGv2 Documentation">PayGv2 Documentation</a>
           </li>
           <li>
-            <a href="#authentication" class="toc-h1 toc-link" data-title="Authentication">Authentication</a>
-          </li>
-          <li>
-            <a href="#kittens" class="toc-h1 toc-link" data-title="Kittens">Kittens</a>
+            <a href="#create" class="toc-h1 toc-link" data-title="/ Create">/ Create</a>
               <ul class="toc-list-h2">
                   <li>
-                    <a href="#get-all-kittens" class="toc-h2 toc-link" data-title="Get All Kittens">Get All Kittens</a>
-                  </li>
-                  <li>
-                    <a href="#get-a-specific-kitten" class="toc-h2 toc-link" data-title="Get a Specific Kitten">Get a Specific Kitten</a>
-                  </li>
-                  <li>
-                    <a href="#delete-a-specific-kitten" class="toc-h2 toc-link" data-title="Delete a Specific Kitten">Delete a Specific Kitten</a>
+                    <a href="#create-post" class="toc-h2 toc-link" data-title="/Create post">/Create post</a>
                   </li>
               </ul>
           </li>
           <li>
-            <a href="#errors" class="toc-h1 toc-link" data-title="Errors">Errors</a>
+            <a href="#header-parameters" class="toc-h1 toc-link" data-title="Header Parameters">Header Parameters</a>
+              <ul class="toc-list-h2">
+                  <li>
+                    <a href="#authorization" class="toc-h2 toc-link" data-title="Authorization">Authorization</a>
+                  </li>
+                  <li>
+                    <a href="#possible-responses" class="toc-h2 toc-link" data-title="Possible Responses">Possible Responses</a>
+                  </li>
+              </ul>
           </li>
       </ul>
-        <ul class="toc-footer">
-            <li><a href='#'>Sign Up for a Developer Key</a></li>
-            <li><a href='https://github.com/slatedocs/slate'>Documentation Powered by Slate</a></li>
-        </ul>
     </div>
     <div class="page-wrapper">
       <div class="dark-box"></div>
       <div class="content">
-        <h1 id='introduction'>Introduction</h1>
-<p>Welcome to the Kittn API! You can use our API to access Kittn API endpoints, which can get information on various cats, kittens, and breeds in our database.</p>
+        <h1 id='paygv2-documentation'>PayGv2 Documentation</h1>
+<p>version : V1</p>
 
-<p>We have language bindings in Shell, Ruby, Python, and JavaScript! You can view code examples in the dark area to the right, and you can switch the programming language of the examples with the tabs in the top right.</p>
+<p>baseUri : uatapi.payg.in/payment/api/order/</p>
 
-<p>This example API documentation page was created with <a href="https://github.com/slatedocs/slate">Slate</a>. Feel free to edit it and use it as a base for your own API&#39;s documentation.</p>
-<h1 id='authentication'>Authentication</h1>
+<p>protocols : HTTPS</p>
+
+<p>mediaType : application/json</p>
+
 <blockquote>
-<p>To authorize, use this code:</p>
+<p>/create post:</p>
 </blockquote>
-<div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<div class="highlight"><pre class="highlight python tab-python"><code><span class="c1"># PYTHON EXAMPLE
+</span>
+<span class="kn">import</span> <span class="nn">requests</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s">'https://uatapi.payg.in/payment/api/order/create'</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># CURL EXAMPLE</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="c"># With shell, you can just pass the correct header with each request</span>
-curl <span class="s2">"api_endpoint_here"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+curl <span class="nt">-X</span> POST <span class="s2">"uatapi.payg.in/payment/api/order/create"</span> <span class="se">\</span>
+    <span class="nt">-H</span> <span class="s2">"Authorization: key:"</span>Authorization<span class="s2">" value:"</span>OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1<span class="s2">""</span> <span class="se">\</span>
+    <span class="nt">-d</span> @request_body
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="err">#</span> <span class="nx">JAVA</span> <span class="nx">EXAMPLE</span>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">http</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">https</span><span class="dl">'</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">init</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">host</span><span class="p">:</span> <span class="dl">'</span><span class="s1">uatapi.payg.in</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">path</span><span class="p">:</span> <span class="dl">'</span><span class="s1">/payment/api/order/create</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">headers</span><span class="p">:</span> <span class="p">{</span>
+    <span class="dl">'</span><span class="s1">Authorization</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">key:"Authorization" value:"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"</span><span class="dl">'</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+</code></pre></div><h1 id='create'>/ Create</h1><h2 id='create-post'>/Create post</h2>
+<p>POST: /create</p>
+<h1 id='header-parameters'>Header Parameters</h1>
+<blockquote>
+<p>REQUEST HEADERS</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s">'Authorization'</span><span class="p">:</span> <span class="s">'key:"Authorization" value:"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"'</span><span class="p">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>
+Authorization: key:<span class="s2">"Authorization"</span> value:<span class="s2">"OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1"</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">callback</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+  <span class="kd">let</span> <span class="nx">result</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">alloc</span><span class="p">(</span><span class="mi">0</span><span class="p">);</span>
+  <span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">data</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">chunk</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">result</span> <span class="o">=</span> <span class="nx">Buffer</span><span class="p">.</span><span class="nx">concat</span><span class="p">([</span><span class="nx">result</span><span class="p">,</span> <span class="nx">chunk</span><span class="p">]);</span>
+  <span class="p">});</span>
+
+  <span class="nx">response</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="dl">'</span><span class="s1">end</span><span class="dl">'</span><span class="p">,</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// result has response body buffer</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">toString</span><span class="p">());</span>
+  <span class="p">});</span>
+<span class="p">};</span>
+
+<span class="kd">const</span> <span class="nx">req</span> <span class="o">=</span> <span class="nx">http</span><span class="p">.</span><span class="nx">request</span><span class="p">(</span><span class="nx">init</span><span class="p">,</span> <span class="nx">callback</span><span class="p">);</span>
 </code></pre></div>
 <blockquote>
-<p>Make sure to replace <code>meowmeowmeow</code> with your API key.</p>
+<p>REQUEST BODY:</p>
 </blockquote>
-
-<p>Kittn uses API keys to allow access to the API. You can register a new Kittn API key at our <a href="http://example.com/developers">developer portal</a>.</p>
-
-<p>Kittn expects for the API key to be included in all API requests to the server in a header that looks like the following:</p>
-
-<p><code>Authorization: meowmeowmeow</code></p>
-
-<aside class="notice">
-You must replace <code>meowmeowmeow</code> with your personal API key.
-</aside>
-<h1 id='kittens'>Kittens</h1><h2 id='get-all-kittens'>Get All Kittens</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">()</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">kittens</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">();</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">[</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Fluffums"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"calico"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">6</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">7</span><span class="w">
-  </span><span class="p">},</span><span class="w">
-  </span><span class="p">{</span><span class="w">
-    </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-    </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-  </span><span class="p">}</span><span class="w">
-</span><span class="p">]</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves all kittens.</p>
-<h3 id='http-request'>HTTP Request</h3>
-<p><code>GET http://example.com/api/kittens</code></p>
-<h3 id='query-parameters'>Query Parameters</h3>
+<h3 id='authorization'>Authorization</h3>
 <table><thead>
 <tr>
-<th>Parameter</th>
-<th>Default</th>
-<th>Description</th>
+<th>Property</th>
+<th>Value</th>
 </tr>
 </thead><tbody>
 <tr>
-<td>include_cats</td>
-<td>false</td>
-<td>If set to true, the result will also include cats.</td>
-</tr>
-<tr>
-<td>available</td>
+<td>required</td>
 <td>true</td>
-<td>If set to false, the result will include kittens that have already been adopted.</td>
+</tr>
+<tr>
+<td>type</td>
+<td>string</td>
+</tr>
+<tr>
+<td>example</td>
+<td>key:&quot;Authorization&quot; value:&quot;OTcwNDU0MTVkMzkyNDlhODk5NmM0MmUxYzk1OThlZDE6NDNiNDI1YTYxNDhiNGQ5NDk4YTQ5YmU2MTMyMThkYjc6TTo3ODc1&quot;</td>
 </tr>
 </tbody></table>
+<div class="highlight"><pre class="highlight python tab-python"><code>
+<span class="n">body</span> <span class="o">=</span> <span class="s">"""{
+  "OrderKeyId": "",
+  "MerchantKeyId": 2,
+  "ApiKey": "",
+  "UniqueRequestId": "ae021dg",
+  "OrderAmount": 5,
+  "OrderType": "",
+  "OrderId": "",
+  "OrderStatus": "",
+  "OrderAmountData": {
+    "AmountDetail": [
+      {
+        "AmountTypeDesc": "",
+        "Amount": 0
+      }
+    ]
+  },
+  "ProductData": "",
+  "NextStepFlowData": "",
+  "TransactionData": {
+    "AcceptedPaymentTypes": "",
+    "PaymentType": "",
+    "SurchargeType": "",
+    "SurchargeValue": 0,
+    "Card": {
+      "CardNo": "",
+      "CardType": 0,
+      "NameOnCard": "",
+      "ExpiryDate": "",
+      "Cvv": "",
+      "TrackData": "",
+      "ChipData": "",
+      "PassCode": "",
+      "Ksn": "",
+      "PinBlock": "",
+      "AdditionalData1": "",
+      "AdditionalData2": ""
+    },
+    "Ach": {
+      "BankCodeType": 0,
+      "BankCode": "",
+      "AccountNo": "",
+      "BankAccountType": 0,
+      "CheckNo": "",
+      "SecCode": 1,
+      "MicrData": "",
+      "CheckFrontImage": "",
+      "CheckBackImage": "",
+      "NameOnCard": "",
+      "First6Digit": "",
+      "Last4Digit": ""
+    },
+    "Wallet": {
+      "BarQrCode": "",
+      "UserName": "",
+      "WalletType": 1,
+      "FirstName": "",
+      "LastName": ""
+    },
+    "Upi": {
+      "Vpa": "",
+      "AccountNumber": "",
+      "Ifsc": "",
+      "AdhAadhaarNo": ""
+    },
+    "Card3DSecure": {
+      "AuthenticateTransaction": true,
+      "Secure3DAuthenticationRequest": {
+        "MD": "",
+        "PaRes": ""
+      }
+    },
+    "RefTransactionId": "",
+    "IndustrySpecicationCode": "",
+    "PartialPaymentOption": ""
+  },
+  "CustomerData": {
+    "CustomerId": "12",
+    "CustomerNotes": "Sample",
+    "FirstName": "First",
+    "LastName": "Last",
+    "MobileNo": "9011001100",
+    "Email": "test@gmail.com",
+    "EmailReceipt": true,
+    "BillingAddress": "",
+    "BillingCity": "",
+    "BillingState": "",
+    "BillingCountry": "",
+    "BillingZipCode": "",
+    "ShippingFirstName": "",
+    "ShippingLastName": "",
+    "ShippingAddress": "",
+    "ShippingCity": "",
+    "ShippingState": "",
+    "ShippingCountry": "",
+    "ShippingZipCode": "",
+    "ShippingMobileNo": ""
+  },
+  "UserDefinedData": {
+    "UserDefined1": "",
+    "UserDefined2": "",
+    "UserDefined3": "",
+    "UserDefined4": "",
+    "UserDefined5": "",
+    "UserDefined6": "",
+    "UserDefined7": "",
+    "UserDefined8": "",
+    "UserDefined9": "",
+    "UserDefined10": "",
+    "UserDefined11": "",
+    "UserDefined12": "",
+    "UserDefined13": "",
+    "UserDefined14": "",
+    "UserDefined15": "",
+    "UserDefined16": "",
+    "UserDefined17": "",
+    "UserDefined18": "",
+    "UserDefined19": "",
+    "UserDefined20": ""
+  },
+  "IntegrationData": {
+    "UserName": "",
+    "Source": "",
+    "IntegrationType": "",
+    "HashData": "",
+    "PlatformId": ""
+  },
+  "ShipmentData": "",
+  "RequestDateTime": "",
+  "RedirectUrl": ""
+}"""</span>
 
-<aside class="success">
-Remember — a happy kitten is an authenticated kitten!
-</aside>
-<h2 id='get-a-specific-kitten'>Get a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
+<span class="n">req</span> <span class="o">=</span> <span class="n">requests</span><span class="p">.</span><span class="n">post</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">body</span><span class="p">)</span>
 
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
+<span class="k">print</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="n">req</span><span class="p">.</span><span class="n">text</span><span class="p">)</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>
+<span class="o">{</span>
+  <span class="s2">"OrderKeyId"</span>: <span class="s2">""</span>,
+  <span class="s2">"MerchantKeyId"</span>: 2,
+  <span class="s2">"ApiKey"</span>: <span class="s2">""</span>,
+  <span class="s2">"UniqueRequestId"</span>: <span class="s2">"ae021dg"</span>,
+  <span class="s2">"OrderAmount"</span>: 5,
+  <span class="s2">"OrderType"</span>: <span class="s2">""</span>,
+  <span class="s2">"OrderId"</span>: <span class="s2">""</span>,
+  <span class="s2">"OrderStatus"</span>: <span class="s2">""</span>,
+  <span class="s2">"OrderAmountData"</span>: <span class="o">{</span>
+    <span class="s2">"AmountDetail"</span>: <span class="o">[</span>
+      <span class="o">{</span>
+        <span class="s2">"AmountTypeDesc"</span>: <span class="s2">""</span>,
+        <span class="s2">"Amount"</span>: 0
+      <span class="o">}</span>
+    <span class="o">]</span>
+  <span class="o">}</span>,
+  <span class="s2">"ProductData"</span>: <span class="s2">""</span>,
+  <span class="s2">"NextStepFlowData"</span>: <span class="s2">""</span>,
+  <span class="s2">"TransactionData"</span>: <span class="o">{</span>
+    <span class="s2">"AcceptedPaymentTypes"</span>: <span class="s2">""</span>,
+    <span class="s2">"PaymentType"</span>: <span class="s2">""</span>,
+    <span class="s2">"SurchargeType"</span>: <span class="s2">""</span>,
+    <span class="s2">"SurchargeValue"</span>: 0,
+    <span class="s2">"Card"</span>: <span class="o">{</span>
+      <span class="s2">"CardNo"</span>: <span class="s2">""</span>,
+      <span class="s2">"CardType"</span>: 0,
+      <span class="s2">"NameOnCard"</span>: <span class="s2">""</span>,
+      <span class="s2">"ExpiryDate"</span>: <span class="s2">""</span>,
+      <span class="s2">"Cvv"</span>: <span class="s2">""</span>,
+      <span class="s2">"TrackData"</span>: <span class="s2">""</span>,
+      <span class="s2">"ChipData"</span>: <span class="s2">""</span>,
+      <span class="s2">"PassCode"</span>: <span class="s2">""</span>,
+      <span class="s2">"Ksn"</span>: <span class="s2">""</span>,
+      <span class="s2">"PinBlock"</span>: <span class="s2">""</span>,
+      <span class="s2">"AdditionalData1"</span>: <span class="s2">""</span>,
+      <span class="s2">"AdditionalData2"</span>: <span class="s2">""</span>
+    <span class="o">}</span>,
+    <span class="s2">"Ach"</span>: <span class="o">{</span>
+      <span class="s2">"BankCodeType"</span>: 0,
+      <span class="s2">"BankCode"</span>: <span class="s2">""</span>,
+      <span class="s2">"AccountNo"</span>: <span class="s2">""</span>,
+      <span class="s2">"BankAccountType"</span>: 0,
+      <span class="s2">"CheckNo"</span>: <span class="s2">""</span>,
+      <span class="s2">"SecCode"</span>: 1,
+      <span class="s2">"MicrData"</span>: <span class="s2">""</span>,
+      <span class="s2">"CheckFrontImage"</span>: <span class="s2">""</span>,
+      <span class="s2">"CheckBackImage"</span>: <span class="s2">""</span>,
+      <span class="s2">"NameOnCard"</span>: <span class="s2">""</span>,
+      <span class="s2">"First6Digit"</span>: <span class="s2">""</span>,
+      <span class="s2">"Last4Digit"</span>: <span class="s2">""</span>
+    <span class="o">}</span>,
+    <span class="s2">"Wallet"</span>: <span class="o">{</span>
+      <span class="s2">"BarQrCode"</span>: <span class="s2">""</span>,
+      <span class="s2">"UserName"</span>: <span class="s2">""</span>,
+      <span class="s2">"WalletType"</span>: 1,
+      <span class="s2">"FirstName"</span>: <span class="s2">""</span>,
+      <span class="s2">"LastName"</span>: <span class="s2">""</span>
+    <span class="o">}</span>,
+    <span class="s2">"Upi"</span>: <span class="o">{</span>
+      <span class="s2">"Vpa"</span>: <span class="s2">""</span>,
+      <span class="s2">"AccountNumber"</span>: <span class="s2">""</span>,
+      <span class="s2">"Ifsc"</span>: <span class="s2">""</span>,
+      <span class="s2">"AdhAadhaarNo"</span>: <span class="s2">""</span>
+    <span class="o">}</span>,
+    <span class="s2">"Card3DSecure"</span>: <span class="o">{</span>
+      <span class="s2">"AuthenticateTransaction"</span>: <span class="nb">true</span>,
+      <span class="s2">"Secure3DAuthenticationRequest"</span>: <span class="o">{</span>
+        <span class="s2">"MD"</span>: <span class="s2">""</span>,
+        <span class="s2">"PaRes"</span>: <span class="s2">""</span>
+      <span class="o">}</span>
+    <span class="o">}</span>,
+    <span class="s2">"RefTransactionId"</span>: <span class="s2">""</span>,
+    <span class="s2">"IndustrySpecicationCode"</span>: <span class="s2">""</span>,
+    <span class="s2">"PartialPaymentOption"</span>: <span class="s2">""</span>
+  <span class="o">}</span>,
+  <span class="s2">"CustomerData"</span>: <span class="o">{</span>
+    <span class="s2">"CustomerId"</span>: <span class="s2">"12"</span>,
+    <span class="s2">"CustomerNotes"</span>: <span class="s2">"Sample"</span>,
+    <span class="s2">"FirstName"</span>: <span class="s2">"First"</span>,
+    <span class="s2">"LastName"</span>: <span class="s2">"Last"</span>,
+    <span class="s2">"MobileNo"</span>: <span class="s2">"9011001100"</span>,
+    <span class="s2">"Email"</span>: <span class="s2">"test@gmail.com"</span>,
+    <span class="s2">"EmailReceipt"</span>: <span class="nb">true</span>,
+    <span class="s2">"BillingAddress"</span>: <span class="s2">""</span>,
+    <span class="s2">"BillingCity"</span>: <span class="s2">""</span>,
+    <span class="s2">"BillingState"</span>: <span class="s2">""</span>,
+    <span class="s2">"BillingCountry"</span>: <span class="s2">""</span>,
+    <span class="s2">"BillingZipCode"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingFirstName"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingLastName"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingAddress"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingCity"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingState"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingCountry"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingZipCode"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingMobileNo"</span>: <span class="s2">""</span>
+  <span class="o">}</span>,
+  <span class="s2">"UserDefinedData"</span>: <span class="o">{</span>
+    <span class="s2">"UserDefined1"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined2"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined3"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined4"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined5"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined6"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined7"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined8"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined9"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined10"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined11"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined12"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined13"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined14"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined15"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined16"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined17"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined18"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined19"</span>: <span class="s2">""</span>,
+    <span class="s2">"UserDefined20"</span>: <span class="s2">""</span>
+  <span class="o">}</span>,
+  <span class="s2">"IntegrationData"</span>: <span class="o">{</span>
+    <span class="s2">"UserName"</span>: <span class="s2">""</span>,
+    <span class="s2">"Source"</span>: <span class="s2">""</span>,
+    <span class="s2">"IntegrationType"</span>: <span class="s2">""</span>,
+    <span class="s2">"HashData"</span>: <span class="s2">""</span>,
+    <span class="s2">"PlatformId"</span>: <span class="s2">""</span>
+  <span class="o">}</span>,
+  <span class="s2">"ShipmentData"</span>: <span class="s2">""</span>,
+  <span class="s2">"RequestDateTime"</span>: <span class="s2">""</span>,
+  <span class="s2">"RedirectUrl"</span>: <span class="s2">""</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="kd">const</span> <span class="nx">body</span> <span class="o">=</span> <span class="s2">`{
+  "OrderKeyId": "",
+  "MerchantKeyId": 2,
+  "ApiKey": "",
+  "UniqueRequestId": "ae021dg",
+  "OrderAmount": 5,
+  "OrderType": "",
+  "OrderId": "",
+  "OrderStatus": "",
+  "OrderAmountData": {
+    "AmountDetail": [
+      {
+        "AmountTypeDesc": "",
+        "Amount": 0
+      }
+    ]
+  },
+  "ProductData": "",
+  "NextStepFlowData": "",
+  "TransactionData": {
+    "AcceptedPaymentTypes": "",
+    "PaymentType": "",
+    "SurchargeType": "",
+    "SurchargeValue": 0,
+    "Card": {
+      "CardNo": "",
+      "CardType": 0,
+      "NameOnCard": "",
+      "ExpiryDate": "",
+      "Cvv": "",
+      "TrackData": "",
+      "ChipData": "",
+      "PassCode": "",
+      "Ksn": "",
+      "PinBlock": "",
+      "AdditionalData1": "",
+      "AdditionalData2": ""
+    },
+    "Ach": {
+      "BankCodeType": 0,
+      "BankCode": "",
+      "AccountNo": "",
+      "BankAccountType": 0,
+      "CheckNo": "",
+      "SecCode": 1,
+      "MicrData": "",
+      "CheckFrontImage": "",
+      "CheckBackImage": "",
+      "NameOnCard": "",
+      "First6Digit": "",
+      "Last4Digit": ""
+    },
+    "Wallet": {
+      "BarQrCode": "",
+      "UserName": "",
+      "WalletType": 1,
+      "FirstName": "",
+      "LastName": ""
+    },
+    "Upi": {
+      "Vpa": "",
+      "AccountNumber": "",
+      "Ifsc": "",
+      "AdhAadhaarNo": ""
+    },
+    "Card3DSecure": {
+      "AuthenticateTransaction": true,
+      "Secure3DAuthenticationRequest": {
+        "MD": "",
+        "PaRes": ""
+      }
+    },
+    "RefTransactionId": "",
+    "IndustrySpecicationCode": "",
+    "PartialPaymentOption": ""
+  },
+  "CustomerData": {
+    "CustomerId": "12",
+    "CustomerNotes": "Sample",
+    "FirstName": "First",
+    "LastName": "Last",
+    "MobileNo": "9011001100",
+    "Email": "test@gmail.com",
+    "EmailReceipt": true,
+    "BillingAddress": "",
+    "BillingCity": "",
+    "BillingState": "",
+    "BillingCountry": "",
+    "BillingZipCode": "",
+    "ShippingFirstName": "",
+    "ShippingLastName": "",
+    "ShippingAddress": "",
+    "ShippingCity": "",
+    "ShippingState": "",
+    "ShippingCountry": "",
+    "ShippingZipCode": "",
+    "ShippingMobileNo": ""
+  },
+  "UserDefinedData": {
+    "UserDefined1": "",
+    "UserDefined2": "",
+    "UserDefined3": "",
+    "UserDefined4": "",
+    "UserDefined5": "",
+    "UserDefined6": "",
+    "UserDefined7": "",
+    "UserDefined8": "",
+    "UserDefined9": "",
+    "UserDefined10": "",
+    "UserDefined11": "",
+    "UserDefined12": "",
+    "UserDefined13": "",
+    "UserDefined14": "",
+    "UserDefined15": "",
+    "UserDefined16": "",
+    "UserDefined17": "",
+    "UserDefined18": "",
+    "UserDefined19": "",
+    "UserDefined20": ""
+  },
+  "IntegrationData": {
+    "UserName": "",
+    "Source": "",
+    "IntegrationType": "",
+    "HashData": "",
+    "PlatformId": ""
+  },
+  "ShipmentData": "",
+  "RequestDateTime": "",
+  "RedirectUrl": ""
+}`</span><span class="p">;</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">write</span><span class="p">(</span><span class="nx">body</span><span class="p">);</span>
+<span class="nx">req</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+</code></pre></div><h2 id='possible-responses'>Possible Responses</h2>
+<p>200</p>
 
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">get</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
+<p>Status Success</p>
 
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="kd">get</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+<p>400</p>
+
+<p>Bad input parameter. Error message should indicate which one and why.</p>
+
+<p>401</p>
+
+<p>The client passed in the invalid Auth token. Client should refresh the token and then try again.</p>
+
+<p>403</p>
+
+<p>Merchant doesn’t exist. * Merchant not registered. * Application try to access to properties not belong to an App. * Application try to trash/purge root node. * Application try to update contentProperties. * Operation is blocked (for third-party apps). * Merchant account over quota.</p>
+
+<p>404</p>
+
+<p>Resource not found.</p>
+
+<p>405</p>
+
+<p>The resource doesn&#39;t support the specified HTTP verb.</p>
+
+<p>409</p>
+
+<p>Conflict</p>
+
+<p>411</p>
+
+<p>The Content-Length header was not specified.</p>
+
+<p>412</p>
+
+<p>Precondition failed.</p>
+
+<p>429</p>
+
+<p>Too many request for rate limiting.</p>
+
+<p>500</p>
+
+<p>Servers are not working as expected. The request is probably valid but needs to be requested again later.</p>
+
+<p>503</p>
+
+<p>Service Unavailable.</p>
+
+<blockquote>
+<p>Type </p>
+
+<p>any</p>
+
+<p>RESPONSE BODY</p>
+
+<p>200</p>
+</blockquote>
+<div class="highlight"><pre class="highlight python tab-python"><code>
+<span class="s">"OrderKeyId"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"MerchantKeyId"</span><span class="p">:</span> <span class="mi">2</span>
+<span class="s">"ApiKey"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"UniqueRequestId"</span><span class="p">:</span> <span class="s">"ae021dg"</span>
+<span class="s">"OrderAmount"</span><span class="p">:</span> <span class="mf">5.0</span>
+<span class="s">"OrderType"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"OrderId"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"OrderStatus"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"OrderAmountData"</span><span class="p">:</span>
+  <span class="s">"AmountDetail"</span><span class="p">:</span>
+    <span class="o">-</span>
+      <span class="s">"AmountTypeDesc"</span><span class="p">:</span> <span class="s">""</span>
+      <span class="s">"Amount"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="s">"ProductData"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"NextStepFlowData"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"TransactionData"</span><span class="p">:</span>
+  <span class="s">"AcceptedPaymentTypes"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"PaymentType"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"SurchargeType"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"SurchargeValue"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="s">"Card"</span><span class="p">:</span>
+    <span class="s">"CardNo"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"CardType"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="s">"NameOnCard"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"ExpiryDate"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"Cvv"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"TrackData"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"ChipData"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"PassCode"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"Ksn"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"PinBlock"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"AdditionalData1"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"AdditionalData2"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"Ach"</span><span class="p">:</span>
+    <span class="s">"BankCodeType"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="s">"BankCode"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"AccountNo"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"BankAccountType"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="s">"CheckNo"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"SecCode"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="s">"MicrData"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"CheckFrontImage"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"CheckBackImage"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"NameOnCard"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"First6Digit"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"Last4Digit"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"Wallet"</span><span class="p">:</span>
+    <span class="s">"BarQrCode"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"UserName"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"WalletType"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="s">"FirstName"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"LastName"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"Upi"</span><span class="p">:</span>
+    <span class="s">"Vpa"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"AccountNumber"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"Ifsc"</span><span class="p">:</span> <span class="s">""</span>
+    <span class="s">"AdhAadhaarNo"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"Card3DSecure"</span><span class="p">:</span>
+    <span class="s">"AuthenticateTransaction"</span><span class="p">:</span> <span class="n">true</span>
+    <span class="s">"Secure3DAuthenticationRequest"</span><span class="p">:</span>
+      <span class="s">"MD"</span><span class="p">:</span> <span class="s">""</span>
+      <span class="s">"PaRes"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"RefTransactionId"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"IndustrySpecicationCode"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"PartialPaymentOption"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"CustomerData"</span><span class="p">:</span>
+  <span class="s">"CustomerId"</span><span class="p">:</span> <span class="s">"12"</span>
+  <span class="s">"CustomerNotes"</span><span class="p">:</span> <span class="s">"Sample"</span>
+  <span class="s">"FirstName"</span><span class="p">:</span> <span class="s">"First"</span>
+  <span class="s">"LastName"</span><span class="p">:</span> <span class="s">"Last"</span>
+  <span class="s">"MobileNo"</span><span class="p">:</span> <span class="s">"9011001100"</span>
+  <span class="s">"Email"</span><span class="p">:</span> <span class="s">"test@gmail.com"</span>
+  <span class="s">"EmailReceipt"</span><span class="p">:</span> <span class="n">true</span>
+  <span class="s">"BillingAddress"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"BillingCity"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"BillingState"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"BillingCountry"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"BillingZipCode"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingFirstName"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingLastName"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingAddress"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingCity"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingState"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingCountry"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingZipCode"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"ShippingMobileNo"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"UserDefinedData"</span><span class="p">:</span>
+  <span class="s">"UserDefined1"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined2"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined3"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined4"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined5"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined6"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined7"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined8"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined9"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined10"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined11"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined12"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined13"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined14"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined15"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined16"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined17"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined18"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined19"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"UserDefined20"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"IntegrationData"</span><span class="p">:</span>
+  <span class="s">"UserName"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"Source"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"IntegrationType"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"HashData"</span><span class="p">:</span> <span class="s">""</span>
+  <span class="s">"PlatformId"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"ShipmentData"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"RequestDateTime"</span><span class="p">:</span> <span class="s">""</span>
+<span class="s">"RedirectUrl"</span><span class="p">:</span> <span class="s">""</span>
+</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code><span class="o">{</span>
+  <span class="s2">"OrderKeyId"</span>: <span class="s2">"200915M292UAA10030"</span>,
+  <span class="s2">"MerchantKeyId"</span>: 292,
+  <span class="s2">"UniqueRequestId"</span>: <span class="s2">"AA10030"</span>,
+  <span class="s2">"OrderType"</span>: <span class="s2">"PAYMENT"</span>,
+  <span class="s2">"OrderAmount"</span>: 15,
+  <span class="s2">"OrderId"</span>: <span class="s2">"225"</span>,
+  <span class="s2">"OrderStatus"</span>: null,
+  <span class="s2">"OrderPaymentStatus"</span>: 0,
+  <span class="s2">"OrderPaymentStatusText"</span>: null,
+  <span class="s2">"PaymentStatus"</span>: 0,
+  <span class="s2">"PaymentTransactionId"</span>: null,
+  <span class="s2">"PaymentResponseCode"</span>: 0,
+  <span class="s2">"PaymentApprovalCode"</span>: null,
+  <span class="s2">"PaymentResponseText"</span>: null,
+  <span class="s2">"PaymentMethod"</span>: null,
+  <span class="s2">"PaymentAccount"</span>: null,
+  <span class="s2">"OrderNotes"</span>: null,
+  <span class="s2">"PaymentDateTime"</span>: null,
+  <span class="s2">"UpdatedDateTime"</span>: null,
+  <span class="s2">"PaymentProcessUrl"</span>: <span class="s2">"https://uat.payg.in/payment/payment?orderid=200915M292UAA10030"</span>,
+  <span class="s2">"OrderPaymentCustomerData"</span>: <span class="o">{</span>
+    <span class="s2">"FirstName"</span>: <span class="s2">"test"</span>,
+    <span class="s2">"LastName"</span>: null,
+    <span class="s2">"Address"</span>: null,
+    <span class="s2">"City"</span>: null,
+    <span class="s2">"State"</span>: null,
+    <span class="s2">"ZipCode"</span>: null,
+    <span class="s2">"Country"</span>: null,
+    <span class="s2">"MobileNo"</span>: <span class="s2">"33333333333"</span>,
+    <span class="s2">"Email"</span>: <span class="s2">"praveen@gmail.com"</span>,
+    <span class="s2">"UserId"</span>: null,
+    <span class="s2">"IpAddress"</span>: null
+  <span class="o">}</span>,
+  <span class="s2">"UpiLink"</span>: <span class="s2">"&amp;sign="</span>,
+  <span class="s2">"CustomerData"</span>: <span class="o">{</span>
+    <span class="s2">"CustomerId"</span>: <span class="s2">"1"</span>,
+    <span class="s2">"CustomerNotes"</span>: null,
+    <span class="s2">"FirstName"</span>: <span class="s2">"test"</span>,
+    <span class="s2">"LastName"</span>: <span class="s2">"m"</span>,
+    <span class="s2">"MobileNo"</span>: <span class="s2">"33333333333"</span>,
+    <span class="s2">"Email"</span>: <span class="s2">"praveen@gmail.com"</span>,
+    <span class="s2">"EmailReceipt"</span>: <span class="nb">false</span>,
+    <span class="s2">"BillingAddress"</span>: <span class="s2">"Telangana"</span>,
+    <span class="s2">"BillingCity"</span>: <span class="s2">"test"</span>,
+    <span class="s2">"BillingState"</span>: <span class="s2">"TS"</span>,
+    <span class="s2">"BillingCountry"</span>: <span class="s2">"IN"</span>,
+    <span class="s2">"BillingZipCode"</span>: <span class="s2">"TEST"</span>,
+    <span class="s2">"ShippingFirstName"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingLastName"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingAddress"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingCity"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingState"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingCountry"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingZipCode"</span>: <span class="s2">""</span>,
+    <span class="s2">"ShippingMobileNo"</span>: <span class="s2">""</span>
+  <span class="o">}</span>
+<span class="o">}</span>
+</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code>
+<span class="dl">"</span><span class="s2">OrderKeyId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">MerchantKeyId</span><span class="dl">"</span><span class="p">:</span> <span class="mi">2</span>
+<span class="dl">"</span><span class="s2">ApiKey</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">UniqueRequestId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">ae021dg</span><span class="dl">"</span>
+<span class="dl">"</span><span class="s2">OrderAmount</span><span class="dl">"</span><span class="p">:</span> <span class="mf">5.0</span>
+<span class="dl">"</span><span class="s2">OrderType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">OrderId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">OrderStatus</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">OrderAmountData</span><span class="dl">"</span><span class="p">:</span>
+  <span class="dl">"</span><span class="s2">AmountDetail</span><span class="dl">"</span><span class="p">:</span>
+    <span class="o">-</span>
+      <span class="dl">"</span><span class="s2">AmountTypeDesc</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+      <span class="dl">"</span><span class="s2">Amount</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+<span class="dl">"</span><span class="s2">ProductData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">NextStepFlowData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">TransactionData</span><span class="dl">"</span><span class="p">:</span>
+  <span class="dl">"</span><span class="s2">AcceptedPaymentTypes</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">PaymentType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">SurchargeType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">SurchargeValue</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+  <span class="dl">"</span><span class="s2">Card</span><span class="dl">"</span><span class="p">:</span>
+    <span class="dl">"</span><span class="s2">CardNo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">CardType</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="dl">"</span><span class="s2">NameOnCard</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">ExpiryDate</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">Cvv</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">TrackData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">ChipData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">PassCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">Ksn</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">PinBlock</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">AdditionalData1</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">AdditionalData2</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">Ach</span><span class="dl">"</span><span class="p">:</span>
+    <span class="dl">"</span><span class="s2">BankCodeType</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="dl">"</span><span class="s2">BankCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">AccountNo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">BankAccountType</span><span class="dl">"</span><span class="p">:</span> <span class="mi">0</span>
+    <span class="dl">"</span><span class="s2">CheckNo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">SecCode</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="dl">"</span><span class="s2">MicrData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">CheckFrontImage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">CheckBackImage</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">NameOnCard</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">First6Digit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">Last4Digit</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">Wallet</span><span class="dl">"</span><span class="p">:</span>
+    <span class="dl">"</span><span class="s2">BarQrCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">UserName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">WalletType</span><span class="dl">"</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="dl">"</span><span class="s2">FirstName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">LastName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">Upi</span><span class="dl">"</span><span class="p">:</span>
+    <span class="dl">"</span><span class="s2">Vpa</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">AccountNumber</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">Ifsc</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+    <span class="dl">"</span><span class="s2">AdhAadhaarNo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">Card3DSecure</span><span class="dl">"</span><span class="p">:</span>
+    <span class="dl">"</span><span class="s2">AuthenticateTransaction</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
+    <span class="dl">"</span><span class="s2">Secure3DAuthenticationRequest</span><span class="dl">"</span><span class="p">:</span>
+      <span class="dl">"</span><span class="s2">MD</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+      <span class="dl">"</span><span class="s2">PaRes</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">RefTransactionId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">IndustrySpecicationCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">PartialPaymentOption</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">CustomerData</span><span class="dl">"</span><span class="p">:</span>
+  <span class="dl">"</span><span class="s2">CustomerId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">12</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">CustomerNotes</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Sample</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">FirstName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">First</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">LastName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">Last</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">MobileNo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">9011001100</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">Email</span><span class="dl">"</span><span class="p">:</span> <span class="dl">"</span><span class="s2">test@gmail.com</span><span class="dl">"</span>
+  <span class="dl">"</span><span class="s2">EmailReceipt</span><span class="dl">"</span><span class="p">:</span> <span class="kc">true</span>
+  <span class="dl">"</span><span class="s2">BillingAddress</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">BillingCity</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">BillingState</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">BillingCountry</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">BillingZipCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingFirstName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingLastName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingAddress</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingCity</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingState</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingCountry</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingZipCode</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">ShippingMobileNo</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">UserDefinedData</span><span class="dl">"</span><span class="p">:</span>
+  <span class="dl">"</span><span class="s2">UserDefined1</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined2</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined3</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined4</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined5</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined6</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined7</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined8</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined9</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined10</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined11</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined12</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined13</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined14</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined15</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined16</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined17</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined18</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined19</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">UserDefined20</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">IntegrationData</span><span class="dl">"</span><span class="p">:</span>
+  <span class="dl">"</span><span class="s2">UserName</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">Source</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">IntegrationType</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">HashData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+  <span class="dl">"</span><span class="s2">PlatformId</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">ShipmentData</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">RequestDateTime</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
+<span class="dl">"</span><span class="s2">RedirectUrl</span><span class="dl">"</span><span class="p">:</span> <span class="dl">""</span>
 </code></pre></div>
 <blockquote>
-<p>The above command returns JSON structured like this:</p>
+<p>Type:</p>
+
+<p>any</p>
 </blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"name"</span><span class="p">:</span><span class="w"> </span><span class="s2">"Max"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"breed"</span><span class="p">:</span><span class="w"> </span><span class="s2">"unknown"</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"fluffiness"</span><span class="p">:</span><span class="w"> </span><span class="mi">5</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"cuteness"</span><span class="p">:</span><span class="w"> </span><span class="mi">10</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint retrieves a specific kitten.</p>
-
-<aside class="warning">Inside HTML code blocks like this one, you can't use Markdown, so use <code>&lt;code&gt;</code> blocks to denote code.</aside>
-<h3 id='http-request-2'>HTTP Request</h3>
-<p><code>GET http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to retrieve</td>
-</tr>
-</tbody></table>
-<h2 id='delete-a-specific-kitten'>Delete a Specific Kitten</h2><div class="highlight"><pre class="highlight ruby tab-ruby"><code><span class="nb">require</span> <span class="s1">'kittn'</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="no">Kittn</span><span class="o">::</span><span class="no">APIClient</span><span class="p">.</span><span class="nf">authorize!</span><span class="p">(</span><span class="s1">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="nf">kittens</span><span class="p">.</span><span class="nf">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight python tab-python"><code><span class="kn">import</span> <span class="nn">kittn</span>
-
-<span class="n">api</span> <span class="o">=</span> <span class="n">kittn</span><span class="p">.</span><span class="n">authorize</span><span class="p">(</span><span class="s">'meowmeowmeow'</span><span class="p">)</span>
-<span class="n">api</span><span class="p">.</span><span class="n">kittens</span><span class="p">.</span><span class="n">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
-</code></pre></div><div class="highlight"><pre class="highlight shell tab-shell"><code>curl <span class="s2">"http://example.com/api/kittens/2"</span>
-  <span class="nt">-X</span> DELETE
-  <span class="nt">-H</span> <span class="s2">"Authorization: meowmeowmeow"</span>
-</code></pre></div><div class="highlight"><pre class="highlight javascript tab-javascript"><code><span class="kd">const</span> <span class="nx">kittn</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="dl">'</span><span class="s1">kittn</span><span class="dl">'</span><span class="p">);</span>
-
-<span class="kd">let</span> <span class="nx">api</span> <span class="o">=</span> <span class="nx">kittn</span><span class="p">.</span><span class="nx">authorize</span><span class="p">(</span><span class="dl">'</span><span class="s1">meowmeowmeow</span><span class="dl">'</span><span class="p">);</span>
-<span class="kd">let</span> <span class="nx">max</span> <span class="o">=</span> <span class="nx">api</span><span class="p">.</span><span class="nx">kittens</span><span class="p">.</span><span class="k">delete</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-</code></pre></div>
-<blockquote>
-<p>The above command returns JSON structured like this:</p>
-</blockquote>
-<div class="highlight"><pre class="highlight json tab-json"><code><span class="p">{</span><span class="w">
-  </span><span class="nl">"id"</span><span class="p">:</span><span class="w"> </span><span class="mi">2</span><span class="p">,</span><span class="w">
-  </span><span class="nl">"deleted"</span><span class="w"> </span><span class="p">:</span><span class="w"> </span><span class="s2">":("</span><span class="w">
-</span><span class="p">}</span><span class="w">
-</span></code></pre></div>
-<p>This endpoint deletes a specific kitten.</p>
-<h3 id='http-request-3'>HTTP Request</h3>
-<p><code>DELETE http://example.com/kittens/&lt;ID&gt;</code></p>
-<h3 id='url-parameters-2'>URL Parameters</h3>
-<table><thead>
-<tr>
-<th>Parameter</th>
-<th>Description</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>ID</td>
-<td>The ID of the kitten to delete</td>
-</tr>
-</tbody></table>
-<h1 id='errors'>Errors</h1>
-<aside class="notice">
-This error section is stored in a separate file in <code>includes/_errors.md</code>. Slate allows you to optionally separate out your docs into many files...just save them to the <code>includes</code> folder and add them to the top of your <code>index.md</code>'s frontmatter. Files are included in the order listed.
-</aside>
-
-<p>The Kittn API uses the following error codes:</p>
-
-<table><thead>
-<tr>
-<th>Error Code</th>
-<th>Meaning</th>
-</tr>
-</thead><tbody>
-<tr>
-<td>400</td>
-<td>Bad Request -- Your request is invalid.</td>
-</tr>
-<tr>
-<td>401</td>
-<td>Unauthorized -- Your API key is wrong.</td>
-</tr>
-<tr>
-<td>403</td>
-<td>Forbidden -- The kitten requested is hidden for administrators only.</td>
-</tr>
-<tr>
-<td>404</td>
-<td>Not Found -- The specified kitten could not be found.</td>
-</tr>
-<tr>
-<td>405</td>
-<td>Method Not Allowed -- You tried to access a kitten with an invalid method.</td>
-</tr>
-<tr>
-<td>406</td>
-<td>Not Acceptable -- You requested a format that isn&#39;t json.</td>
-</tr>
-<tr>
-<td>410</td>
-<td>Gone -- The kitten requested has been removed from our servers.</td>
-</tr>
-<tr>
-<td>418</td>
-<td>I&#39;m a teapot.</td>
-</tr>
-<tr>
-<td>429</td>
-<td>Too Many Requests -- You&#39;re requesting too many kittens! Slow down!</td>
-</tr>
-<tr>
-<td>500</td>
-<td>Internal Server Error -- We had a problem with our server. Try again later.</td>
-</tr>
-<tr>
-<td>503</td>
-<td>Service Unavailable -- We&#39;re temporarily offline for maintenance. Please try again later.</td>
-</tr>
-</tbody></table>
 
       </div>
       <div class="dark-box">
           <div class="lang-selector">
                 <a href="#" data-language-name="shell">shell</a>
-                <a href="#" data-language-name="ruby">ruby</a>
                 <a href="#" data-language-name="python">python</a>
                 <a href="#" data-language-name="javascript">javascript</a>
           </div>
